@@ -80,7 +80,7 @@ class Employee {
   // fields are the methods of the Employee class itself. No outside method can read or
   // write to these fields.
 
-  /**
+  /*
    * You could use the public keyword with your instance fields, but it would
    * be a very bad idea. Having public data fields would allow any part of the program
    * to read and modify the instance fields, completely ruining encapsulation.Any
@@ -100,7 +100,7 @@ class Employee {
     hireDay = LocalDate.of(year, month, day);
   }
 
-  /**
+  /*
    * • A constructor has the same name as the class.
    * • A class can have more than one constructor.
    * • A constructor can take zero, one, or more parameters.
