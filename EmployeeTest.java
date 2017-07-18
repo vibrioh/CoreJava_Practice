@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Random;
 
 /**
  * Created by vibri on 7/15/2017.
@@ -66,7 +67,7 @@ public class EmployeeTest {
 
 class Employee {
 
-  private static int nextId = 1;
+  private static int nextId;
   private int id;  // unassigned int == 0
 
   private String name;
@@ -88,6 +89,21 @@ class Employee {
    * code will take advantage of that access privilege when you least expect it.We
    * strongly recommend to make all your instance fields private
    */
+
+  // static initialization block
+  // Static initialization occurs when the class is first loaded. Like instance fields,
+  // static fields are 0 , false , or null unless you explicitly set them to another value.
+  static {
+    Random generator = new Random();
+    // set nextId to a radom number between 0 and 9999
+    nextId = generator.nextInt(10000);
+  }
+
+  // object initialization block
+  {
+    id = nextId;
+    nextId++;
+  }
 
   // All methods of this class are tagged as public . The keyword public means that any
   // method in any class can call the method.
@@ -113,6 +129,24 @@ class Employee {
    * • A public field accessor method; and
    * • A public field mutator method.
    */
+
+  // three more overloaded constructors
+  public Employee(String n, double s) {
+    name = n;
+    salary = s;
+    hireDay = LocalDate.now();
+  }
+
+  public Employee(double s) {
+    this("Employee #" + nextId, s);
+  }
+
+  // the default constructor
+  public Employee(){
+    // name initialized to ""
+    // salary not explicitly set --  initialized to 0
+    // id initialized in initialization block
+  }
 
   public int getId() {
     return id;
@@ -145,7 +179,18 @@ class Employee {
   }
 
   public static void main(String[] args) {  // unit test
-    Employee e = new Employee("Test Tony Tester", 40000, 1990, 3, 15);
-    System.out.println(e.getName() +  " " + e.getSalary() + " " + e.getId());
+
+    // fill the staff array with four Employee objects
+    Employee[] staff = new Employee[4];
+
+    staff[0] = new Employee("Test Tony Tester", 40000, 1990, 3, 15);
+    staff[1] = new Employee("Betty", 60000);
+    staff[2] = new Employee(66666);
+    staff[3] = new Employee();
+
+    for (Employee e : staff) {
+      System.out.println(e.getName() +  " " + e.getSalary() + " " + e.getId() + " " + e.getHireDay());
+    }
+
   }
 }
