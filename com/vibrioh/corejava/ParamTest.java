@@ -1,3 +1,5 @@
+package com.vibrioh.corejava;
+
 /**
  * Created by vibri on 7/15/2017.
  * This program demonstrates parameter passing in Java.
