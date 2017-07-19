@@ -3,6 +3,10 @@ package com.vibrioh.corejava;
 import java.util.ArrayList;
 
 public class ArrayListTest {
+
+  /**CheckSytle.
+   * This program demonstrates the ArrayList class
+   */
   public static void main(String[] args) {
     // fill the staff array list with three Employee objects
     ArrayList<Employee> staff = new ArrayList<>();
