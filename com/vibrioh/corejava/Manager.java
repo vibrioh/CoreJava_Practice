@@ -24,4 +24,21 @@ public class Manager extends Employee {
   public void setBonus(double b) {
     bonus = b;
   }
+
+  public boolean equals(Object otherObject) {
+    if (!super.equals(otherObject)) {
+      return false;
+    }
+    Manager other = (Manager) otherObject;
+    // super.equals checked that this and other belong to the same class
+    return bonus == other.bonus;
+  }
+
+  public int hashCode() {
+    return super.hashCode() + 17 * new Double(bonus).hashCode();
+  }
+
+  public String toString() {
+    return super.toString() + "[bonus = " + bonus + "]";
+  }
 }
